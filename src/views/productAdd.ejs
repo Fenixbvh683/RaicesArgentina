@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+    <body class="productAdd">
+
+        <%- include('partials/header') %>
+
+            <main class="login">
+                <div class="login__box">
+
+                    <div class="login__box__encabezado">
+
+                        <a href="/" class="rotate-scale-up-ver"><img src="/images/celstecortado.jpg" alt=""></a>
+                        <h4 class="animate__animated animate__flash">CARGA DE PRODUCTOS</h4>
+                        
+                    </div>
+
+                    <div class="login__box__cuerpo container">
+                        
+                        <form action="" method="POST" enctype="multipart/form-data" class="row">
+
+                            <div class="col-12 col-md-6 mb-3 login__box__cuerpo__contenido">
+                                <label for="title" class="form-label">Nombre del Producto</label>
+                                <input type="text" class="form-input" id="title" placeholder="Nombre del Producto" name="title" value="<%= locals.old && (old.title && old.title ) %>">
+                                <small class="text-danger ms-2">
+                                  <%= locals.errors && (errors.title && errors.title.msg) %>
+                                </small>
+                              </div>
+
+                              <div class="col-12 col-md-6 mb-3 login__box__cuerpo__contenido">
+                                <label for="category" class="form-label">Categoria</label>
+                                <select class="form-input" aria-label="Default select example" name="category" id="category">
+                                    <option value="" selected hidden>Seleccione ....</option>
+                                    <% categories.forEach(category=> { %>
+                                      <option value="<%= category.title %>" <%=locals.old && (locals.old.category===category.title
+                                        && 'selected' ) %>>
+                                        <%= category.title %>
+                                      </option>
+                                      <% }) %>
+                                  </select>
+                                  <small class="text-danger ms-2">
+                                    <%= locals.errors && (errors.category && errors.category.msg) %>
+                                  </small>
+                              </div>
+
+                              <div class="col-12 col-md-6 mb-3 login__box__cuerpo__contenido">
+                                <label for="region" class="form-label">Region</label>
+                                <select class="form-input" aria-label="Default select example" name="region" id="region">
+                                    <option value="" selected hidden>Seleccione ....</option>
+                                    <% regiones.forEach(region=> { %>
+                                      <option value="<%= region.title %>" <%=locals.old && (locals.old.region===region.title
+                                        && 'selected' ) %>>
+                                        <%= region.title %>
+                                      </option>
+                                      <% }) %>
+                                  </select>
+                                  <small class="text-danger ms-2">
+                                    <%= locals.errors && (errors.region && errors.region.msg) %>
+                                  </small>
+                              </div>
+
+                              <div class="col-12 col-md-6 mb-3 login__box__cuerpo__contenido">
+                                <label for="character" class="form-label">Caracteristica</label>
+                                <select class="form-input" aria-label="Default select example" name="character" id="character">
+                                    <option value="" selected hidden>Seleccione ....</option>
+                                    <% characters.forEach(character=> { %>
+                                      <option value="<%= character.title %>" <%=locals.old && (locals.old.character===character.title
+                                        && 'selected' ) %>>
+                                        <%= character.title %>
+                                      </option>
+                                      <% }) %>
+                                  </select>
+                                  <small class="text-danger ms-2">
+                                    <%= locals.errors && (errors.character && errors.character.msg) %>
+                                  </small>
+                              </div>
+
+                              <div class="col-12 col-md-6 mb-3 login__box__cuerpo__contenido">
+                                <label for="price" class="form-label">Precio</label>
+                                <input type="number" class="form-input" id="price" placeholder="Precio" name="price" value="<%= locals.old && (old.price && old.price ) %>">
+                                <small class="text-danger ms-2">
+                                  <%= locals.errors && (errors.price && errors.price.msg) %>
+                                </small>
+                              </div>
+
+                              <div class="col-12 col-md-6 mb-3 login__box__cuerpo__contenido">
+                                <label for="discount" class="form-label">Descuento</label>
+                                <input type="number" class="form-input" id="discount" placeholder="Descuento" name="discount" value="<%= locals.old && (old.discount && old.discount ) %>">
+                              </div>
+
+                              <div class="col-12 col-md-6 mb-3 login__box__cuerpo__contenido">
+                                <label for="cant" class="form-label">Cantidad Disponible</label>
+                                <input type="number" class="form-input" id="cant" placeholder="Cantidad Disponible" name="cant" id="cant" value="<%= locals.old && (old.cant && old.cant ) %>">
+                                <small class="text-danger ms-2">
+                                  <%= locals.errors && (errors.cant && errors.cant.msg) %>
+                                </small>
+                              </div>
+        
+                              <div class="col-12 col-md-6 mb-3 login__box__cuerpo__contenido">
+                                <label for="cantMin" class="form-label">Cantidad Minima</label>
+                                <input type="number" class="form-input" id="cantMin" placeholder="Cantidad Minima" name="cantMin" id="cantMin" value="<%= locals.old && (old.cantMin && old.cantMin ) %>">
+                                <small class="text-danger ms-2">
+                                  <%= locals.errors && (errors.cantMin && errors.cantMin.msg) %>
+                                </small>
+                              </div>
+
+
+                              <div class="col-12 mb-3 login__box__cuerpo__contenido">
+                                <label for="description" class="form-label">Descripcion</label>
+                                <textarea name="description" id="description" class="form-input" style="resize: none"><%= locals.old && (old.description && old.description ) %></textarea>
+                                <small class="text-danger ms-2">
+                                  <%= locals.errors && (errors.description && errors.description.msg) %>
+                                </small>
+                              </div>
+
+                              
+
+                              <div class="col-12 d-flex justify-content-end gap-2 mb-3">
+                                <!-- <label for="image" class="btn btn-secondary">Agregar Imagen</label> -->
+                                <input type="file" name="image" id="image">
+                                <button class="btn btn-outline-dark">Guardar</button>
+                              </div>
+
+                        </form>
+                    </div>
+
+
+
+                </div>
+
+            </main>
+            <%- include('partials/footer') %>
+    </body>
+
+</html>
